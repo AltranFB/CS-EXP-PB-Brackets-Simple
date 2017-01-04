@@ -9,37 +9,41 @@ namespace Project
 {
     public class Solution
     {
+        static List<char> Possible;
+
         public static bool Check(string str)
         {
             return DoIt(str);
         }
         public static bool DoIt(string str)
         {
-            if (0 == str.Length || null == str)
+            if (str == null)
                 return true;
 
-            if (1 == str.Length)
-                return false;
+            var idx = 0;
+            Possible = new List<char>();
 
-            if ((str[0] == '(' && str[str.Length - 1] == ')')
-             || (str[0] == '[' && str[str.Length - 1] == ']'))
+            while (idx < str.Length)
             {
-                if (str.Length == 2)
-                    return true;
-                return DoIt(str.Substring(1, str.Length - 2));
+                switch (str[idx])
+                {
+                    case '(':
+                        Possible.Add(')');
+                        break;
+                    case '[':
+                        Possible.Add(']');
+                        break;
+                    case ']':
+                    case ')':
+                        if ((Possible.Count == 0)
+                          ||(Possible.ElementAt(Possible.Count - 1) != str[idx]))
+                            return false;
+                        Possible.RemoveAt(Possible.Count - 1);
+                        break;
+                }
+                idx++;
             }
-
-            int lastOcc;
-            if (str[0] == '(')
-                lastOcc = str.LastIndexOf(')');
-            else if (str[0] == '[')
-                lastOcc = str.LastIndexOf(']');
-            else
-                return false;
-            if (lastOcc == -1)
-                return false;
-
-            return DoIt(str.Substring(1, lastOcc - 1)) && DoIt(str.Substring(lastOcc + 1));
+            return (Possible.Count == 0);
         }
 
         //  Auto generated code, please don't modify the code below
