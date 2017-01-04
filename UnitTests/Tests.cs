@@ -54,8 +54,23 @@ namespace Project
         {
             Check.That(Solution.DoIt("[](()()[[]])[][[([])")).IsFalse();
         }
+
+        [TestMethod]
+        public void Test10()
+        {
+            Check.That(Solution.DoIt("")).IsTrue();
+        }
+
+        [TestMethod]
+        public void Test11()
+        {
+            Check.That(Solution.DoIt(null)).IsTrue();
+        }
+
+        [TestMethod]
+        public void Test12()
+        {
+            Check.That(Solution.DoIt("([])))]]]")).IsFalse();
+        }
     }
 }
-/*
-
- */
