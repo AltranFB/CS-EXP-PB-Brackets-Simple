@@ -9,8 +9,6 @@ namespace Project
 {
     public class Solution
     {
-        static List<char> Possible;
-
         public static bool DoIt(string str)
         {
         }
