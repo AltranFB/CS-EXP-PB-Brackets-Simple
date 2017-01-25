@@ -5,12 +5,13 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Project
+namespace BracketsSimple
 {
     public class Solution
     {
         public static bool DoIt(string str)
         {
+            throw new NotImplementedException();
         }
 
         //  Auto generated code, please don't modify the code below
