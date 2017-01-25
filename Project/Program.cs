@@ -5,7 +5,7 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Project
+namespace BracketsSimple
 {
     public class Solution
     {
